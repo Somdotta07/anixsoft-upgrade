@@ -1,0 +1,46 @@
+name: Build and deploy to hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build   # `output: "export"` writes static files to ./out
+
+      # ---- OPTION A: deploy to your existing host over FTP ----
+      # Add these repository secrets in GitHub:
+      #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+      - name: Upload to hosting via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /public_html/      # adjust to your host's web root
+          exclude: |
+            **/.git*
+            **/.git*/**
+
+      # ---- OPTION B: deploy over SSH/rsync instead (delete Option A if used) ----
+      # - name: Deploy via rsync
+      #   uses: burnett01/rsync-deployments@7.0.1
+      #   with:
+      #     switches: -avzr --delete
+      #     path: out/
+      #     remote_path: /home/youruser/public_html/
+      #     remote_host: ${{ secrets.SSH_HOST }}
+      #     remote_user: ${{ secrets.SSH_USER }}
+      #     remote_key: ${{ secrets.SSH_KEY }}
