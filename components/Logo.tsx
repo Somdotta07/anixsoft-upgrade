@@ -22,13 +22,14 @@ export default function Logo({
   return (
     <Link href="/" className="logo" aria-label="Anixsoft — home">
       <img
-        src="/logo.svg"
+        src="/logo.png"
         alt=""
         className={"logo-img" + (onPlate ? " on-plate" : "")}
-        width={120}
-        height={30}
+        width={100}
+        height={50}
       />
-      <span style={footer ? { display: "none" } : undefined}>ANIXSOFT</span>
+      
+      
     </Link>
   );
 }

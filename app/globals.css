@@ -408,14 +408,14 @@ select:focus-visible, textarea:focus-visible {
 
 /* ---------------- logo image ---------------- */
 .logo-img{
-  height:30px; width:auto; display:block; flex:none;
+  height:50px; width: 100px;; display:block; flex:none;
   /* If your logo is dark and disappears on the dark header,
      add the class "on-plate" to the <img> in components/Logo.tsx */
 }
 .logo-img.on-plate{
   background:#FFFFFF; padding:5px 7px; border-radius:7px; height:34px;
 }
-.foot .logo-img{height:28px}
+.foot .logo-img{height:58px}
 
 
 /* ============================================================
