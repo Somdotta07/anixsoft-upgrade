@@ -34,9 +34,12 @@ All in **`lib/site.ts`**:
 | `formEndpoint` | your Formspree ID from formspree.io (free tier: 50/month) |
 
 Also:
-- **Screenshots** — `components/ProductPage.tsx` renders a dashed placeholder box
-  for each product screen. Put real PNGs in `public/screens/` and swap the
-  `<div className="shot-note">` for an `<img>`. The comment marks the spot.
+- **Product screenshots** — `components/ProductPage.tsx` still renders a dashed
+  placeholder for the two platform product pages. Put PNGs in `public/screens/`
+  and swap the `<div className="shot-note">` for an `<img>`.
+- **Work screenshots** are already in `public/work/` (1200x750 WebP). To replace
+  one, drop in a new file with the same name — no code change.
+- **Logo** is `public/logo.png`, background already knocked out to transparent.
 - **Case study content** — `lib/projects.ts`. Every project has `problem`,
   `approach`, `architecture`, `outcome` and a headline metric. **The metrics in
   there now are plausible placeholders — replace them with your real numbers

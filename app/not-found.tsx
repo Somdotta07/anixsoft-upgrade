@@ -12,7 +12,7 @@ export default function NotFound() {
           Start from one of these.
         </p>
         <div className="btn-row">
-          <Link href="/" className="btn btn-amber">Home</Link>
+          <Link href="/" className="btn btn-brand">Home</Link>
           <Link href="/work/" className="btn btn-ghost">Case studies</Link>
           <Link href="/contact/" className="btn btn-ghost">Contact</Link>
         </div>

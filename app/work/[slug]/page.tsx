@@ -46,7 +46,21 @@ export default async function CaseStudy(
             {p.url && (
               <div>
                 <span className="mono">Live</span>
-                <b><a href={p.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--amber)" }}>Visit site ↗</a></b>
+                <b>
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand)" }}>
+                    {p.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} ↗
+                  </a>
+                </b>
+              </div>
+            )}
+            {p.url2 && (
+              <div>
+                <span className="mono">Also</span>
+                <b>
+                  <a href={p.url2} target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand)" }}>
+                    {p.url2.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} ↗
+                  </a>
+                </b>
               </div>
             )}
           </div>

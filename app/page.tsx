@@ -7,7 +7,9 @@ import { PROJECTS } from "@/lib/projects";
 import { SITE, TESTIMONIALS } from "@/lib/site";
 
 export default function Home() {
-  const featured = PROJECTS.slice(0, 6);
+  const featured = ["vuemotion","vistacloud","malta-experience","delhi-o-delhi","novel-aquatech-portal","ninas-arts"]
+    .map((s) => PROJECTS.find((p) => p.slug === s)!)
+    .filter(Boolean);
 
   return (
     <>
@@ -120,7 +122,7 @@ export default function Home() {
           <Pipeline />
 
           <div className="btn-row">
-            <Link href="/forge/" className="btn btn-amber">
+            <Link href="/forge/" className="btn btn-brand">
               How Anix Forge works
             </Link>
             <Link href="/contact/" className="btn btn-ghost">
@@ -136,17 +138,29 @@ export default function Home() {
           <Eyebrow>Selected work</Eyebrow>
           <h2 className="h2">Systems in production, not screenshots</h2>
 
-          <div className="grid-3">
-            {featured.map((p) => (
-              <Link href={`/work/${p.slug}/`} className="card" key={p.slug}>
-                <span className="tag mono">
-                  {p.category} · {p.country}
-                </span>
-                <h3>{p.name}</h3>
-                <p>{p.summary}</p>
-                <div className="result">
-                  <b>{p.metric}</b>
-                  <span>{p.metricLabel}</span>
+          <div className="work-grid">
+            {featured.map((p, idx) => (
+              <Link
+                href={`/work/${p.slug}/`}
+                className="wcard"
+                key={p.slug}
+                style={{ animationDelay: `${idx * 60}ms` }}
+              >
+                <div className="wc-media">
+                  {p.image ? (
+                    <img src={p.image} alt={`${p.name} — screenshot`} loading="lazy" />
+                  ) : (
+                    <div className="wc-fallback"><span>{p.name}</span></div>
+                  )}
+                </div>
+                <div className="wc-body">
+                  <span className="tag mono">{p.category} · {p.country}</span>
+                  <h3>{p.name}</h3>
+                  <p>{p.summary}</p>
+                  <div className="result">
+                    <b>{p.metric}</b>
+                    <span>{p.metricLabel}</span>
+                  </div>
                 </div>
               </Link>
             ))}

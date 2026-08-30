@@ -137,11 +137,11 @@ export default function ContactForm() {
       />
 
       <div className="full">
-        <button className="btn btn-amber" type="submit" disabled={state === "sending"}>
+        <button className="btn btn-brand" type="submit" disabled={state === "sending"}>
           {state === "sending" ? "Sending…" : "Send enquiry"}
         </button>
         {state === "error" && (
-          <p className="form-note" style={{ color: "var(--amber)" }}>
+          <p className="form-note" style={{ color: "var(--brand)" }}>
             That did not send. Email {SITE.email} and we will pick it up there.
           </p>
         )}

@@ -68,7 +68,7 @@ export default function ContactPage() {
               <span className="kicker mono">India enquiries</span>
               <h3>Local pricing and support</h3>
               <p>
-                Indian businesses — see our <a href="/india/" style={{ color: "var(--amber-deep)" }}>India page</a> for
+                Indian businesses — see our <a href="/india/" style={{ color: "var(--brand-deep)" }}>India page</a> for
                 INR pricing and WhatsApp contact.
               </p>
             </div>

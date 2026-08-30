@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Logo from "./Logo";
 import { NAV, SITE } from "@/lib/site";
 
 function Mark() {
@@ -23,10 +24,7 @@ export function Nav() {
   return (
     <nav className="nav">
       <div className="wrap nav-in">
-        <Link href="/" className="logo">
-          <Mark />
-          ANIXSOFT
-        </Link>
+        <Logo />
 
         <div className="nav-links">
           {NAV.map((n) => (
@@ -73,10 +71,9 @@ export function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div>
-            <Link href="/" className="logo" style={{ marginBottom: 14 }}>
-              <Mark />
-              ANIXSOFT
-            </Link>
+            <div style={{ marginBottom: 14 }}>
+              <Logo />
+            </div>
             <p
               style={{
                 color: "var(--text-mute-light)",
