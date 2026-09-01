@@ -4,10 +4,9 @@ export const SITE = {
   tagline: "Product engineering and applied AI",
   description:
     "Anixsoft builds the software that builds software. Generation systems, business platforms and applied AI for clients in eleven countries.",
-  email: "hello@anixsoft.net",
-  phone: "+91 00000 00000",
-  calcom: "anixsoft/20min", // replace with your real Cal.com link
-  formEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // replace
+  email: "siddhartha@anixsoft.net",
+  phone: "+91 6290 797 367",  
+  formEndpoint: "https://formspree.io/f/mzebegyg",
   addresses: [
     "7 School Road, Kolkata 700028, West Bengal, India",
     "120/1 Naba Mahajati Road, Kolkata 700028, West Bengal, India",
@@ -20,7 +19,7 @@ export const SITE = {
 
 export const NAV = [
   { href: "/forge/", label: "Anix Forge" },
-  { href: "/platforms/society/", label: "Platforms" },
+  { href: "/platforms/", label: "Platforms" },
   { href: "/work/", label: "Work" },
   { href: "/services/", label: "Services" },
   { href: "/writing/", label: "Writing" },

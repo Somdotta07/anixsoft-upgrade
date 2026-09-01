@@ -6,16 +6,6 @@ import { useState } from "react";
 import Logo from "./Logo";
 import { NAV, SITE } from "@/lib/site";
 
-function Mark() {
-  return (
-    <span className="logo-mark" aria-hidden="true">
-      <i style={{ left: 0, top: 0, width: 9, height: 9 }} />
-      <i style={{ right: 0, top: 0, width: 9, height: 9, opacity: 0.55 }} />
-      <i style={{ left: 0, bottom: 0, width: 9, height: 9, opacity: 0.55 }} />
-      <i style={{ right: 0, bottom: 0, width: 9, height: 9, opacity: 0.25 }} />
-    </span>
-  );
-}
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -90,8 +80,8 @@ export function Footer() {
           <div>
             <h5>Products</h5>
             <Link href="/forge/">Anix Forge</Link>
-            <Link href="/platforms/society/">Society Manager</Link>
-            <Link href="/platforms/business/">Business Suite</Link>
+            <Link href="/platforms/civic/">CivicLoop</Link>
+            <Link href="/platforms/operations/">OpsGrid</Link>
           </div>
 
           <div>

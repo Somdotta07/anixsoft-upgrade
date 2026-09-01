@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
-    "", "/forge", "/platforms/society", "/platforms/business",
+    "", "/forge", "/platforms", "/platforms/civic", "/platforms/operations",
     "/work", "/services", "/writing", "/about", "/contact", "/india",
   ].map((p) => ({
     url: `${SITE.url}${p}/`,

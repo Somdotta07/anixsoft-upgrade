@@ -16,6 +16,8 @@ const nextConfig = {
       { source: "/cart", destination: "/", permanent: true },
       { source: "/my-account", destination: "/", permanent: true },
       { source: "/checkout", destination: "/", permanent: true },
+      { source: "/platforms/society", destination: "/platforms/civic", permanent: true },
+      { source: "/platforms/business", destination: "/platforms/operations", permanent: true },
     ];
   },
 };

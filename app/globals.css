@@ -406,18 +406,6 @@ select:focus-visible, textarea:focus-visible {
 }
 
 
-/* ---------------- logo image ---------------- */
-.logo-img{
-  height:50px; width: 100px;; display:block; flex:none;
-  /* If your logo is dark and disappears on the dark header,
-     add the class "on-plate" to the <img> in components/Logo.tsx */
-}
-.logo-img.on-plate{
-  background:#FFFFFF; padding:5px 7px; border-radius:7px; height:34px;
-}
-.foot .logo-img{height:58px}
-
-
 /* ============================================================
    WORK GRID — one card shape for websites and mobile apps
    ============================================================ */
@@ -514,4 +502,84 @@ select:focus-visible, textarea:focus-visible {
   .wcard{opacity:1 !important; transform:none !important; animation:none !important}
   .wcard:hover{transform:none}
   .wcard:hover .wc-media img{transform:none}
+}
+
+/* ---------------- logo ---------------- */
+.logo{display:flex; align-items:center; gap:10px; text-decoration:none}
+.logo-mark-svg{display:block; flex:none; overflow:visible}
+.logo-word{
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;
+  font-weight:800; font-size:20px; letter-spacing:-.035em;
+  color:#fff; line-height:1;
+}
+.logo-word em{font-style:normal; color:var(--brand)}
+.sec-light .logo-word{color:var(--text-dark)}
+@media(max-width:420px){ .logo-word{font-size:17px} }
+
+/* ---------------- product page ---------------- */
+.hero-shot{
+  margin:0; border-radius:18px; overflow:hidden;
+  border:1px solid var(--line-dark);
+  box-shadow:0 30px 70px rgba(6,4,14,.55);
+}
+.hero-shot img{width:100%; height:auto; display:block}
+.claim{
+  max-width:44ch; margin:46px auto 0; text-align:center;
+  font-family:'Bricolage Grotesque',sans-serif; font-weight:600;
+  font-size:clamp(19px,2.4vw,26px); line-height:1.35; letter-spacing:-.02em;
+  color:var(--text-light);
+}
+.claim em{font-style:normal; color:var(--brand)}
+
+.screens{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:52px}
+.screen{margin:0}
+.screen-media{
+  border-radius:14px; overflow:hidden; border:1px solid var(--line-dark);
+  aspect-ratio:16/10; background:var(--ink-soft);
+}
+.screen-media img{width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.screen:hover .screen-media img{transform:scale(1.04)}
+.screen figcaption{padding-top:20px}
+.screen h3{font-size:18px; margin:4px 0 8px}
+.screen p{font-size:14.2px; line-height:1.62; color:var(--text-mute-light)}
+.sec-light .screen p{color:var(--text-mute-dark)}
+
+.quote-box{
+  margin-top:56px; background:var(--paper-card);
+  border:1px solid var(--line-light); border-left:3px solid var(--brand);
+  border-radius:0 14px 14px 0; padding:36px 38px;
+}
+.quote-box h3{font-size:24px; margin-bottom:14px}
+.quote-box p{font-size:16px; line-height:1.7; color:var(--text-mute-dark); margin-bottom:14px; max-width:66ch}
+
+@media(max-width:1024px){ .screens{grid-template-columns:1fr 1fr} }
+@media(max-width:720px){
+  .screens{grid-template-columns:1fr; gap:34px}
+  .quote-box{padding:26px 22px}
+  .claim{margin-top:32px}
+}
+
+/* ---------------- platforms index ---------------- */
+.plat{
+  display:grid; grid-template-columns:1.15fr 1fr; gap:44px; align-items:center;
+  padding:56px 0; border-bottom:1px solid var(--line-dark);
+}
+.plat:first-child{padding-top:0}
+.plat:last-child{border-bottom:none; padding-bottom:0}
+.plat:nth-child(even) .plat-media{order:2}
+.plat-media{
+  display:block; border-radius:16px; overflow:hidden;
+  border:1px solid var(--line-dark); box-shadow:0 24px 56px rgba(6,4,14,.44);
+}
+.plat-media img{width:100%; height:auto; display:block; transition:transform .55s cubic-bezier(.2,.8,.3,1)}
+.plat-media:hover img{transform:scale(1.03)}
+.plat-line{
+  font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:19px;
+  letter-spacing:-.02em; color:var(--brand); margin:12px 0 14px;
+}
+.plat-body > p{font-size:16px; line-height:1.68; color:var(--text-mute-light); max-width:52ch}
+@media(max-width:900px){
+  .plat{grid-template-columns:1fr; gap:28px; padding:40px 0}
+  .plat:nth-child(even) .plat-media{order:0}
 }

@@ -1,23 +1,21 @@
 import Link from "next/link";
 import { CTA, Eyebrow, PageHead } from "@/components/Chrome";
 
-export interface Tier {
-  name: string;
-  price: string;
-  unit: string;
-  featured?: boolean;
-  points: string[];
-}
-
 export interface ProductSpec {
   eyebrow: string;
   title: string;
   lede: string;
   demoParam: string;
-  screens: { label: string; note: string }[];
+  hero: string;
+  heroAlt: string;
+  /** the "so what" line under the hero */
+  claim: string;
+  screens: { image: string; label: string; title: string; body: string }[];
+  /** the same core, shaped for different buyers - this is the selling point */
+  shapes: { sector: string; title: string; body: string }[];
   features: { title: string; body: string }[];
-  audience: { kicker: string; title: string; body: string }[];
-  tiers: Tier[];
+  ai: { title: string; body: string }[];
+  delivery: { title: string; body: string }[];
   ctaTitle: string;
   ctaBody: string;
 }
@@ -27,35 +25,77 @@ export default function ProductPage({ spec }: { spec: ProductSpec }) {
     <>
       <PageHead eyebrow={spec.eyebrow} title={spec.title} lede={spec.lede} />
 
-      {/* screenshots */}
-      <section className="sec sec-dark">
+      {/* hero shot */}
+      <section className="sec-deep" style={{ paddingBottom: 0 }}>
         <div className="wrap">
-          <Eyebrow>Inside the product</Eyebrow>
-          <h2 className="h2">What your team actually sees</h2>
-
-          {spec.screens.map((s) => (
-            <div className="shot" key={s.label}>
-              <div className="shot-bar">
-                <i /><i /><i />
-                <span className="mono" style={{ marginLeft: 8, color: "var(--text-mute-light)" }}>
-                  {s.label}
-                </span>
-              </div>
-              <div className="shot-body">
-                {/* Replace this placeholder with:
-                    <img src="/screens/your-screenshot.png" alt="..." /> */}
-                <div className="shot-note">{s.note}</div>
-              </div>
-            </div>
-          ))}
+          <figure className="hero-shot">
+            <img src={spec.hero} alt={spec.heroAlt} />
+          </figure>
+          <p className="claim">{spec.claim}</p>
+          <div className="btn-row" style={{ justifyContent: "center", paddingBottom: 96 }}>
+            <Link href={`/contact/?product=${spec.demoParam}`} className="btn btn-brand">
+              Request a demo
+            </Link>
+            <Link href="/work/" className="btn btn-ghost">See our work</Link>
+          </div>
         </div>
       </section>
 
-      {/* features */}
+      {/* screen by screen */}
+      <section className="sec sec-dark">
+        <div className="wrap">
+          <Eyebrow>Inside the product</Eyebrow>
+          <h2 className="h2">What each person actually sees</h2>
+          <p className="lede">
+            Different people need different things from the same system. Each role
+            gets a screen built for the job in front of them, not a cut-down
+            version of someone else&apos;s.
+          </p>
+
+          <div className="screens">
+            {spec.screens.map((s) => (
+              <figure className="screen" key={s.title}>
+                <div className="screen-media">
+                  <img src={s.image} alt={`${s.title} screen`} loading="lazy" />
+                </div>
+                <figcaption>
+                  <span className="tag mono">{s.label}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* the flexibility argument */}
       <section className="sec sec-light">
         <div className="wrap">
+          <Eyebrow>One core, many shapes</Eyebrow>
+          <h2 className="h2">The same engine, fitted to your situation</h2>
+          <p className="lede">
+            This is not a product you buy off a shelf and bend yourself around.
+            The core is proven; what sits on top is configured for the sector,
+            the workflow and the words your people already use.
+          </p>
+          <div className="grid-2">
+            {spec.shapes.map((s) => (
+              <div key={s.title}>
+                <span className="kicker mono">{s.sector}</span>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* capability */}
+      <section className="sec sec-deep">
+        <div className="wrap">
           <Eyebrow>Capability</Eyebrow>
-          <h2 className="h2">Everything the day-to-day needs</h2>
+          <h2 className="h2">What comes as standard</h2>
           <div className="feat">
             {spec.features.map((f) => (
               <div key={f.title}>
@@ -67,15 +107,19 @@ export default function ProductPage({ spec }: { spec: ProductSpec }) {
         </div>
       </section>
 
-      {/* audience */}
-      <section className="sec sec-deep">
+      {/* AI */}
+      <section className="sec sec-dark">
         <div className="wrap">
-          <Eyebrow>Who it is for</Eyebrow>
-          <h2 className="h2">Built from real deployments, not a feature list</h2>
+          <Eyebrow>AI where it earns its place</Eyebrow>
+          <h2 className="h2">Not a chatbot bolted on the side</h2>
+          <p className="lede">
+            We add models where they remove real work, and leave them out where a
+            rule would do the job more cheaply and more predictably.
+          </p>
           <div className="grid-2">
-            {spec.audience.map((a) => (
+            {spec.ai.map((a) => (
               <div key={a.title}>
-                <span className="kicker mono">{a.kicker}</span>
+                <span className="kicker mono">AI</span>
                 <h3>{a.title}</h3>
                 <p>{a.body}</p>
               </div>
@@ -84,37 +128,39 @@ export default function ProductPage({ spec }: { spec: ProductSpec }) {
         </div>
       </section>
 
-      {/* pricing */}
+      {/* delivery + how pricing works */}
       <section className="sec sec-light">
         <div className="wrap">
-          <Eyebrow>Pricing</Eyebrow>
-          <h2 className="h2">Priced per deployment, not per seat</h2>
-          <p className="lede">
-            Indicative ranges. Final scope is agreed on a call — we would rather
-            quote accurately than cheaply.
-          </p>
-
-          <div className="price">
-            {spec.tiers.map((t) => (
-              <div className={"price-card" + (t.featured ? " featured" : "")} key={t.name}>
-                {t.featured && <span className="tag mono">Most chosen</span>}
-                <h3>{t.name}</h3>
-                <div className="price-amt">
-                  {t.price} <small>{t.unit}</small>
-                </div>
-                <ul>
-                  {t.points.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/contact/?product=${spec.demoParam}`}
-                  className={"btn " + (t.featured ? "btn-dark" : "btn-ghost-dark")}
-                >
-                  Request a demo
-                </Link>
+          <Eyebrow>How you get it</Eyebrow>
+          <h2 className="h2">Mobile, web, or both — your call</h2>
+          <div className="feat">
+            {spec.delivery.map((d) => (
+              <div key={d.title}>
+                <h4>{d.title}</h4>
+                <p>{d.body}</p>
               </div>
             ))}
+          </div>
+
+          <div className="quote-box">
+            <h3>What does it cost?</h3>
+            <p>
+              We do not publish a price, because we have never quoted two of these
+              the same. The number depends on how many roles you need, whether it
+              runs on our infrastructure or yours, what it has to integrate with,
+              and how much of it you want us to keep running afterwards.
+            </p>
+            <p>
+              Tell us what you are trying to fix and we will come back with a
+              fixed written scope and a fixed number — usually within a week, and
+              at no cost.
+            </p>
+            <div className="btn-row">
+              <Link href={`/contact/?product=${spec.demoParam}`} className="btn btn-dark">
+                Request a demo
+              </Link>
+              <Link href="/contact/" className="btn btn-ghost-dark">Get a scoped quote</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Software development company in Kolkata — Anixsoft India",
   description:
-    "Web development, mobile apps, society management and business software for Indian businesses. Kolkata-based, INR pricing, GST invoicing, WhatsApp support.",
+    "Web development, mobile apps, civic complaint systems and business operations software for Indian businesses. Kolkata-based, INR pricing, GST invoicing, WhatsApp support.",
   alternates: { canonical: "/india/" },
 };
 
@@ -18,11 +18,11 @@ const PACKAGES = [
     points: ["Up to 8 pages, custom design", "Mobile responsive", "Contact form and WhatsApp button", "Google Business and basic SEO setup", "1 year support included", "Delivered in 2–3 weeks"],
   },
   {
-    name: "Society Manager",
-    price: "₹12",
-    unit: "per flat / month",
+    name: "CivicLoop",
+    price: "Scoped",
+    unit: "per deployment",
     featured: true,
-    points: ["Maintenance billing and dues", "Complaint tracking", "Notices and polls", "Visitor and gate management", "Resident mobile app", "Tally-compatible export"],
+    points: ["Citizen reporting with photo and location", "Officer queue with response times", "Public status tracking", "Ward or society routing", "Mobile and web", "Your branding and domain"],
   },
   {
     name: "Custom application",

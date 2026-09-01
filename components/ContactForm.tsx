@@ -5,8 +5,8 @@ import { SITE } from "@/lib/site";
 
 const PROJECT_TYPES = [
   "Anix Forge (site generation)",
-  "Society Manager",
-  "Business Suite",
+  "CivicLoop (citizen complaints)",
+  "OpsGrid (business operations)",
   "Custom platform build",
   "Applied AI / ML integration",
   "Web application",
@@ -36,12 +36,12 @@ export default function ContactForm() {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [preset, setPreset] = useState("");
 
-  // Pre-select project type from ?product=forge / society / business
+  // Pre-select project type from ?product=forge / civic / operations
   useEffect(() => {
     const p = new URLSearchParams(window.location.search).get("product");
     if (p === "forge") setPreset(PROJECT_TYPES[0]);
-    if (p === "society") setPreset(PROJECT_TYPES[1]);
-    if (p === "business") setPreset(PROJECT_TYPES[2]);
+    if (p === "civic") setPreset(PROJECT_TYPES[1]);
+    if (p === "operations") setPreset(PROJECT_TYPES[2]);
   }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

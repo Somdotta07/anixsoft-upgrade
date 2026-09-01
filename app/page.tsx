@@ -58,7 +58,7 @@ export default function Home() {
           </h2>
           <p className="lede">
             AI made simple websites cheap. It did not make payroll engines,
-            society management platforms or motion-analysis pipelines cheap.
+            civic complaint platforms or motion-analysis pipelines cheap.
             That is where we work.
           </p>
 
