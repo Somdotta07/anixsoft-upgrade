@@ -16,12 +16,16 @@ const spec: ProductSpec = {
   demoParam: "business",
   screens: [
     {
+      image: "/screens/business-approvals.png",
       label: "business-suite · approvals",
-      note: "Screenshot: approvals queue — pending items by owner, ageing and delegation.\nDrop your PNG at /public/screens/business-approvals.png and replace this block.",
+      title: "Approvals dashboard",
+      body: "Pending, delegated and escalated approvals.",
     },
     {
+      image: "/screens/business-payrun.png",
       label: "business-suite · payroll run",
-      note: "Screenshot: payrun detail — entity, period, deductions and disbursement status.\nDrop your PNG at /public/screens/business-payrun.png.",
+      title: "Payrun detail",
+      body: "Entity, period, deductions and disbursement status.",
     },
   ],
   features: [
