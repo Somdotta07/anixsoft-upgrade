@@ -7,7 +7,7 @@ export const SITE = {
   email: "siddhartha@anixsoft.net",
   phone: "+91 6290 797 367",  
   formEndpoint: "https://formspree.io/f/mzebegyg",
-  calcom:"https://cal.com/anixsoft/20min",
+  calcom:"anixsoft/20min",
   addresses: [
     "7 School Road, Kolkata 700028, West Bengal, India",
     "120/1 Naba Mahajati Road, Kolkata 700028, West Bengal, India",
